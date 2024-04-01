@@ -38,3 +38,19 @@ cd synthetic-monitoring-platform
 ```bash
 pip install -r requirements.txt
 ```
+
+### Configuration
+1. (Optional) Configure Prometheus and Grafana according to your environment.
+2. Edit the configuration files under the config/ directory to match your setup.
+3. For advanced configurations, refer to the individual documentation for Prometheus and Grafana.
+
+
+### Running
+To start the Synthetic Monitoring Platform:
+```bash
+python synthetic_monitoring/main.py
+```
+
+### Usage
+After starting the platform, it will begin monitoring according to the configurations set. Results can be viewed in Grafana, where dashboards can be customized to display the desired metrics.
+
