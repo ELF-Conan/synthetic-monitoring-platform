@@ -25,16 +25,16 @@ Before you begin, ensure you have the following installed:
 
 ```bash
 git clone https://github.com/yourgithubusername/synthetic-monitoring-platform.git
-
+```
 
 2. Navigate to the project directory:
 
 ```bash
 cd synthetic-monitoring-platform
-
+```
 
 3. Install the required Python packages:
 
 ```bash
 pip install -r requirements.txt
-
+```
