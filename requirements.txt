@@ -2,3 +2,4 @@ flask
 gunicorn
 prometheus_client
 pingparsing
+yaml
