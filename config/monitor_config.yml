@@ -1,0 +1,7 @@
+ping_targets:
+  - host: "google.com"
+    duration: 5
+  - host: "baidu.com"
+    duration: 5
+http_port: 8000
+ping_interval: 60
