@@ -4,8 +4,11 @@ import time
 import yaml
 
 # Define the Prometheus metric
-ping_latency_gauge = Gauge('ping_latency', 'Ping response time in milliseconds', ['target'])
-ping_loss_gauge = Gauge('ping_packet_loss', 'Ping packet loss rate', ['target'])
+ping_latency_min_gauge = Gauge('ping_latency_min', 'Round trip time minimum', ['target'])
+ping_latency_avg_gauge = Gauge('ping_latency_avg', 'Round trip time average', ['target'])
+ping_latency_max_gauge = Gauge('ping_latency_max', 'Round trip time maximum', ['target'])
+ping_loss_rate_gauge = Gauge('ping_packet_loss_rate', 'Ping packet loss rate', ['target'])
+ping_loss_count_gauge = Gauge('ping_packet_count_rate', 'Ping packet loss count', ['target'])
 
 def load_config(config_path):
     try:   
@@ -29,15 +32,22 @@ def ping_hosts(host, duration):
     transmitter.count = duration  # default: send 4 ping packet
     result = transmitter.ping()
     parsed_result = ping_parser.parse(result).as_dict()
+    
     # update Prometheus metric
-    latency = parsed_result['rtt_avg']
-    packet_loss = parsed_result['packet_loss_rate']
-    ping_latency_gauge.labels(target=host).set(latency)
-    ping_loss_gauge.labels(target=host).set(packet_loss)
-    print(f"Pinged {host}: Avg latency={latency} ms, Packet Loss={packet_loss}%")
+    latency_avg = parsed_result['rtt_avg']
+    latency_min = parsed_result['rtt_min']
+    latency_max = parsed_result['rtt_max']
+    packet_loss_rate = parsed_result['packet_loss_rate']
+    packet_loss_count = parsed_result['packet_loss_count']
+    
+    ping_latency_min_gauge.labels(target=host).set(latency_min)
+    ping_latency_avg_gauge.labels(target=host).set(latency_avg)
+    ping_latency_max_gauge.labels(target=host).set(latency_max)
+    ping_loss_rate_gauge.labels(target=host).set(packet_loss_rate)
+    ping_loss_count_gauge.labels(target=host).set(packet_loss_count)
+   
+    print(f"Pinged {host}: Avg latency={latency_avg} ms, Packet Loss={packet_loss_rate}%")
 
-#if __name__ == "__main__":
-    #config = load_config("../../config/monitor_config.yml")
 def run_monitoring(config_path):
     config = load_config(config_path)
     http_port = config.get("http_port", 8000)

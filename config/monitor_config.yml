@@ -3,5 +3,7 @@ ping_targets:
     duration: 5
   - host: "baidu.com"
     duration: 5
+  - host: "twitter.com"
+    duration: 5
 http_port: 8000
-ping_interval: 60
+ping_interval: 30
