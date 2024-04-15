@@ -8,7 +8,7 @@ ping_latency_min_gauge = Gauge('ping_latency_min', 'Round trip time minimum', ['
 ping_latency_avg_gauge = Gauge('ping_latency_avg', 'Round trip time average', ['target'])
 ping_latency_max_gauge = Gauge('ping_latency_max', 'Round trip time maximum', ['target'])
 ping_loss_rate_gauge = Gauge('ping_packet_loss_rate', 'Ping packet loss rate', ['target'])
-ping_loss_count_gauge = Gauge('ping_packet_count_rate', 'Ping packet loss count', ['target'])
+ping_loss_count_gauge = Gauge('ping_packet_loss_count', 'Ping packet loss count', ['target'])
 
 def load_config(config_path):
     try:   
