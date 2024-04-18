@@ -48,8 +48,8 @@ pip install -r requirements.txt
 2. To configure the monitoring targets and behavior of the platform, edit the monitoring_config.yml file located in the root directory. Here are the available configuration options:
 
 - **`ping_targets`**:A list of targets to be monitored with ping. Each target has the following properties:
-  - **`host`***: The hostname or IP address of the target.
-  - **`duration`***: The number of ping packets to send to each target during each check.
+  - **`host`**: The hostname or IP address of the target.
+  - **`duration`**: The number of ping packets to send to each target during each check.
 
 - **`http_port`**:The port on which the Prometheus metrics exporter will run. This port is used by Prometheus to scrape the metrics exposed by this platform.
 
