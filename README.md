@@ -9,6 +9,10 @@ The Synthetic Monitoring Platform is a comprehensive solution designed to monito
 - **Visual Insights**: Employs Grafana for customizable and insightful visualization of monitoring data, aiding in quick decision-making.
 - **Configurable Monitoring**: Supports customization and configuration for different environments and requirements.
 
+## System Design Diagram
+
+![System Design](system_design_diagram.jpg)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -44,10 +48,8 @@ pip install -r requirements.txt
 2. To configure the monitoring targets and behavior of the platform, edit the monitoring_config.yml file located in the root directory. Here are the available configuration options:
 
 - **`ping_targets`**:A list of targets to be monitored with ping. Each target has the following properties:
-
-***`host`***: The hostname or IP address of the target.
-
-***`duration`***: The number of ping packets to send to each target during each check.
+  - **`host`***: The hostname or IP address of the target.
+  - **`duration`***: The number of ping packets to send to each target during each check.
 
 - **`http_port`**:The port on which the Prometheus metrics exporter will run. This port is used by Prometheus to scrape the metrics exposed by this platform.
 
@@ -57,9 +59,15 @@ pip install -r requirements.txt
 
 
 ### Running
-To start the Synthetic Monitoring Platform:
+To start the Synthetic Monitoring Platform via Python command:
 ```bash
 python3 synthetic_monitoring/main.py
+```
+
+To start the Synthetic Monitoring Platform via Shell command in Linux System:
+```bash
+cd synthetic-monitoring-platform/scripts
+sh start_ping_monitoring.sh
 ```
 
 ### Usage
