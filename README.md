@@ -45,7 +45,7 @@ pip install -r requirements.txt
 
 ### Configuration
 1. (Optional) Configure Prometheus and Grafana according to your environment.
-2. To configure the monitoring targets and behavior of the platform, edit the monitoring_config.yml file located in the root directory. Here are the available configuration options:
+2. To configure the monitoring targets and behavior of the platform, edit the monitoring_config.yml file located in the config directory. Here are the available configuration options:
 
 - **`ping_targets`**:A list of targets to be monitored with ping. Each target has the following properties:
   - **`host`**: The hostname or IP address of the target.
